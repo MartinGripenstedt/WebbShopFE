@@ -1,13 +1,4 @@
-/*!
-* Start Bootstrap - Shop Homepage v5.0.6 (https://startbootstrap.com/template/shop-homepage)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
-
-    //Hämtar produkterna
-    function hemtaprodukt(){        
+    function getAllProducts(){        
     fetch("https://fakestoreapi.com/products")
         .then(res => res.json())
         .then(data => {
@@ -16,21 +7,21 @@
             data.forEach(item => {
 
                 const markup = `
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">${item.category}</div>
-                        <img class="card-img-top" src="${item.image}" />
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <h5 class="fw-bolder">${item.title}</h5>
-                            ${item.price}</div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-dark mt-auto" href="bestallning.html?productId=${item.id}">Beställ</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
+    <div class="col mb-5">
+        <div class="card h-100" data-item-id="${item.id}">
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">${item.category}</div>
+            <img class="card-img-top" id="img-${item.id}" src="${item.image}" />
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder" id="title-${item.id}">${item.title}</h5>
+                    <span id="price-${item.id}">${item.price}</span>
+                </div>
+            </div>
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-dark mt-auto" id="addToOrder" href="bestallning.html">Beställ</a></div>
+            </div>
+        </div>
+    </div>`;
                 //insertAdjacentHTML() parsar om markup texten till html och lägger in i DOM trädet vid "beforeend"
                 productDisplay.insertAdjacentHTML("beforeend", markup);
                 });
@@ -39,4 +30,37 @@
 
     }
 
-    window.onload = hemtaprodukt;
+    function addProductToOrder(item, button){
+        console.log("Adding product to localStorage:", item);
+
+
+        localStorage.setItem('product', JSON.stringify(item));
+    }
+
+    document.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'addToOrder') {
+            const productCard = event.target.closest('.card');
+            const id = productCard.dataset.itemId;
+            const titleElement = document.getElementById(`title-${id}`);
+            const imageElement = document.getElementById(`img-${id}`);
+            const priceElement = document.getElementById(`price-${id}`);
+            
+            const title = titleElement.textContent;
+            const image = imageElement.src;
+            const price = priceElement.textContent.trim();
+    
+            const item = {
+                id: id,
+                title: title,
+                image: image,
+                price: price
+            };
+    
+            addProductToOrder(item, event.target);
+    
+        }
+    });
+    
+    
+
+    window.onload = getAllProducts;
