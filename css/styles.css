@@ -10,6 +10,30 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ .flex-container {
+  display: flex;
+  justify-content: space-between; /* Justerar utrymmet mellan sektionerna */
+  align-items: start; /* Justerar innehållet till toppen */
+}
+
+.image-section {
+  flex: 1; /* Gör att bilden tar upp lika mycket utrymme som personkort-sektionen */
+  max-width: 50%; /* Justerar bilden till att ta upp max 50% av tillgängligt utrymme */
+}
+
+.team-section {
+  flex: 1; /* Gör att personkort-sektionen tar upp lika mycket utrymme som bildsektionen */
+  max-width: 50%; /* Justerar personkorten till att ta upp max 50% av tillgängligt utrymme */
+}
+
+@media (max-width: 768px) {
+  .flex-container {
+      flex-direction: column; /* Staplar sektionerna vertikalt på mindre skärmar */
+  }
+  .image-section, .team-section {
+      max-width: 100%; /* Tillåter båda sektionerna att ta upp full bredd på små skärmar */
+  }
+}
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
