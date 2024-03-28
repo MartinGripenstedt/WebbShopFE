@@ -1,4 +1,4 @@
-    function getAllProducts(){        
+function getAllProducts() {
     fetch("https://fakestoreapi.com/products")
         .then(res => res.json())
         .then(data => {
@@ -14,7 +14,7 @@
             <div class="card-body p-4">
                 <div class="text-center">
                     <h5 class="fw-bolder" id="title-${item.id}">${item.title}</h5>
-                    <span id="price-${item.id}">${item.price}</span>
+                    <span id="price-${item.id}">${item.price} SEK</span>
                 </div>
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -24,43 +24,43 @@
     </div>`;
                 //insertAdjacentHTML() parsar om markup texten till html och lägger in i DOM trädet vid "beforeend"
                 productDisplay.insertAdjacentHTML("beforeend", markup);
-                });
-            })
-            .catch(error => console.error('Error fetching products:', error));
+            });
+        })
+        .catch(error => console.error('Error fetching products:', error));
+
+}
+
+function addProductToOrder(item, button) {
+    console.log("Adding product to localStorage:", item);
+
+
+    localStorage.setItem('product', JSON.stringify(item));
+}
+
+document.addEventListener('click', function (event) {
+    if (event.target && event.target.id === 'addToOrder') {
+        const productCard = event.target.closest('.card');
+        const id = productCard.dataset.itemId;
+        const titleElement = document.getElementById(`title-${id}`);
+        const imageElement = document.getElementById(`img-${id}`);
+        const priceElement = document.getElementById(`price-${id}`);
+
+        const title = titleElement.textContent;
+        const image = imageElement.src;
+        const price = priceElement.textContent.trim();
+
+        const item = {
+            id: id,
+            title: title,
+            image: image,
+            price: price
+        };
+
+        addProductToOrder(item, event.target);
 
     }
-
-    function addProductToOrder(item, button){
-        console.log("Adding product to localStorage:", item);
+});
 
 
-        localStorage.setItem('product', JSON.stringify(item));
-    }
 
-    document.addEventListener('click', function(event) {
-        if (event.target && event.target.id === 'addToOrder') {
-            const productCard = event.target.closest('.card');
-            const id = productCard.dataset.itemId;
-            const titleElement = document.getElementById(`title-${id}`);
-            const imageElement = document.getElementById(`img-${id}`);
-            const priceElement = document.getElementById(`price-${id}`);
-            
-            const title = titleElement.textContent;
-            const image = imageElement.src;
-            const price = priceElement.textContent.trim();
-    
-            const item = {
-                id: id,
-                title: title,
-                image: image,
-                price: price
-            };
-    
-            addProductToOrder(item, event.target);
-    
-        }
-    });
-    
-    
-
-    window.onload = getAllProducts;
+window.onload = getAllProducts;
