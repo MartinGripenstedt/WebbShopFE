@@ -1,3 +1,4 @@
+/* För testning
 const userDummy = {
   name: "Bengt Svensson",
   email: "bengt.svensson@gmail.com",
@@ -23,6 +24,7 @@ if ("product" in localStorage) {
     localStorage.removeItem("product");
   }
 localStorage.setItem("product", JSON.stringify(productDummy));
+*/
 
 const user = JSON.parse(localStorage.getItem("user"));
 const product = JSON.parse(localStorage.getItem("product"));
@@ -72,38 +74,3 @@ const markup = `
   `;
 
 document.getElementById("confirmDisplay").innerHTML = markup;
-
-/*
-<div class="text-center"><h3>Orderbekräftelse</h3></div>
-    <div class="form-control">
-      
-        <div class="row">
-            <div class="col-2 text-center">
-                <img class="img-fluid" src="${productImg}">
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                <h5><b>Produkt:</b></h5>
-                <h5>${productTitle}</h5>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                <h5><b>Pris:</b></h5>  
-                <h5>$${productPrice}</h5>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                <h5><b>Antal:</b></h5>
-                <h5>1</h5>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                <h5><b>Kund:</b></h5>
-                <h5>${custName}</h5>
-                <h5>${custEmail}</h5>
-                <h5>${custPhone}</h5>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                <h5><b>Adress:</b></h5>
-                <h5>${custStreet}</h5>
-                <h5>${custZip}, ${custCity}</h5>
-            </div>
-        </div>
-    </div>
-*/
