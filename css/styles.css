@@ -10,29 +10,32 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- .flex-container {
-  display: flex;
-  justify-content: space-between; /* Justerar utrymmet mellan sektionerna */
-  align-items: start; /* Justerar innehållet till toppen */
+ 
+.card-img-left {
+  width: 90%;
+  background: scroll center url('https://images.unsplash.com/photo-1507166763745-bfe008fbb831?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
 }
-
-.image-section {
-  flex: 1; /* Gör att bilden tar upp lika mycket utrymme som personkort-sektionen */
-  max-width: 50%; /* Justerar bilden till att ta upp max 50% av tillgängligt utrymme */
-}
-
-.team-section {
-  flex: 1; /* Gör att personkort-sektionen tar upp lika mycket utrymme som bildsektionen */
-  max-width: 50%; /* Justerar personkorten till att ta upp max 50% av tillgängligt utrymme */
-}
-
-@media (max-width: 768px) {
-  .flex-container {
-      flex-direction: column; /* Staplar sektionerna vertikalt på mindre skärmar */
+@media (max-width: 767px) {
+  .card-img-left {
+      width: 200%; 
   }
-  .image-section, .team-section {
-      max-width: 100%; /* Tillåter båda sektionerna att ta upp full bredd på små skärmar */
-  }
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-google {
+  color: white !important;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white !important;
+  background-color: #3b5998;
 }
 :root {
   --bs-blue: #0d6efd;
