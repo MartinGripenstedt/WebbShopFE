@@ -38,9 +38,9 @@ function saveData(){
 
     //Telefon-validering
     const phone = phoneInput.value.trim();
-    //Om telnr inte matchar med någon siffra("\d"), "-" eller "{}" så får vi ett felmeddelande.
-    if (!/^[\d-{}]+$/.test(phone)) {
-        alert('Telefonnummer får bara innehålla siffror, "-" och "{}".');
+    //Om telnr inte matchar med någon siffra("\d"), "-" eller "()" så får vi ett felmeddelande.
+    if (!/^[\d-()]+$/.test(phone)) {
+        alert('Telefonnummer får bara innehålla siffror, "-" och "()".');
         return; 
     }
 
