@@ -14,7 +14,7 @@
             <div class="card-body p-4">
                 <div class="text-center">
                     <h5 class="fw-bolder" id="title-${item.id}">${item.title}</h5>
-                    <span id="price-${item.id}">${item.price}</span>
+                    <span id="price-${item.id}">$${item.price}</span>
                 </div>
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

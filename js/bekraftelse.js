@@ -53,7 +53,7 @@ const markup = `
         </div>
         <div class="p-2">
             <h5><b>Pris</b>:</h5>  
-            <h5>$${productPrice}</h5>
+            <h5>${productPrice}</h5>
         </div>
         <div class="p-2">
             <h5><b>Antal</b>:</h5>
