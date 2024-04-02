@@ -31,7 +31,7 @@ const product = JSON.parse(localStorage.getItem("product"));
 
 const productId = product.id;
 const productTitle = product.title;
-const productImg = product.img;
+const productImg = product.image;
 const productPrice = product.price;
 
 const custName = user.name;
