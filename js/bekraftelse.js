@@ -41,6 +41,7 @@ const custStreet = user.street;
 const custZip = user.zip;
 const custCity = user.city;
 
+
 const markup = `
     <div class="border">
         <div class="text-center p-2"><h3>Orderbekräftelse</h3></div>
