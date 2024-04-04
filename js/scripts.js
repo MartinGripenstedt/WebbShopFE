@@ -30,7 +30,7 @@
 
     }
 
-    function addProductToOrder(item, button){
+    function addProductToOrder(item){
         console.log("Adding product to localStorage:", item);
 
 
@@ -56,7 +56,7 @@
                 price: price
             };
     
-            addProductToOrder(item, event.target);
+            addProductToOrder(item);
     
         }
     });
